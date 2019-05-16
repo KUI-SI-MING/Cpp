@@ -1,7 +1,7 @@
 #include <iostream>
 #include <assert.h>
 #include <vector>
-
+#define N 5
 using namespace::std;
 
 ////////////////////////////////////////////////////////
@@ -230,6 +230,113 @@ void FindGCD()
 
 }
 
+////////////////////////////////////////////////////////
+//6.数组内容交换
+//根据上一题既可以进行处理
+//交换函数
+void SwapNum(int* pa, int* pb)
+{
+	*pa ^= *pb;
+	*pb ^= *pa;
+	*pa ^= *pb;
+}
+
+void SwapElements()
+{
+	vector<int> arr1, arr2;
+
+	cout << "Please Input Arr1 Elements:";
+	int num = 0;
+	while (cin >> num)
+	{
+		arr1.push_back(num);
+		if (arr1.size() > N - 1)
+			break;
+
+		cout << "Please Input Arr1 Elements:";
+	}
+	cout << endl << endl;
+
+	cout << "Please Input Arr2 Elements:";
+	while (cin >> num)
+	{
+		arr2.push_back(num);
+		if (arr2.size() > N - 1)
+			break;
+
+		cout << "Please Input Arr2 Elements:";
+	}
+	cout << endl << endl;
+
+	cout << "The Arr1 Is: ";
+	for (int i = 0; i < arr1.size(); i++)
+	{
+		cout << arr1[i] << ' ';
+	}
+	cout << endl << endl;
+	cout << "The Arr2 Is:";
+	for (int i = 0; i < arr2.size(); i++)
+	{
+		cout << arr2[i] << ' ';
+	}
+	cout << endl << endl;
+
+	for (int i = 0; i < arr1.size(); i++)
+	{
+		SwapNum(&arr1[i], &arr2[i]);
+	}
+	cout << endl << endl;
+
+	cout << "The Arr1 Is: ";
+	for (int i = 0; i < arr1.size(); i++)
+	{
+		cout << arr1[i] << ' ';
+	}
+	cout << endl << endl;
+	cout << "The Arr2 Is: ";
+	for (int i = 0; i < arr2.size(); i++)
+	{
+		cout << arr2[i] << ' ';
+	}
+	cout << endl << endl;
+}
+
+////////////////////////////////////////////////////////
+//7.计算1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100 的值
+void SumofFraction()
+{
+	double sum = 0.0;
+	for (int i = 1; i <= 100; i++)
+	{
+		sum += pow(-1, i + 1) / i;
+	}
+
+	cout << "The Sum of '1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100' Is: " << sum << endl;
+}
+
+
+////////////////////////////////////////////////////////
+//8.1~100 的所有整数中出现多少次数字9
+void NineNumber()
+{
+
+	int cou = 0;
+	int i = 0;
+	for (i = 1; i <= 100; i++)
+	{
+		int tmp = 1;
+		int nu = i;
+		while (nu > 0)
+		{
+			tmp = nu % 10;
+			if ((tmp / 9) == 1)
+				cou++;
+			nu = nu / 10;
+		}
+	}
+	cout << "The number of 9 is: " << cou<< endl;//90
+}
+
 int main()
 {
 	////1.打印素数
@@ -242,11 +349,19 @@ int main()
 	//Swap();
 	////5.最大公约数GCD
 	//FindGCD();
+	////6.数组内容交换
+	//SwapElements();
+	////7.分数求和
+	//SumofFraction();
+	////8.数九问题
+	NineNumber();
 
 
 	system("pause");
 	return 0;
 }
+
+
 
 
 
