@@ -198,19 +198,6 @@ void FindGCD()
 	cout << "Please input two numbers: ";
 	cin >> n1 >> n2;
 
-	////穷举法--效率低下
-	//vector<int> num;
-	//for (int i = 1;i < 4294967296; i++)//32位下unsigned int 范围0~4294967296
-	//{
-	//	if ((n1 % i == 0) && (n2 % i == 0))
-	//	{
-	//		num.push_back(i);
-	//	}
-	//}
-	//cout << num[num.size() - 1] << endl;
-
-	//按照从大（两个整数中较小的数）到小（到最小的整数1）的顺序求出第一个能同时整除
-	//两个整数的自然数
 	unsigned int max = n1;
 	unsigned int min = n2;
 	if (n1 < n2)
@@ -218,7 +205,19 @@ void FindGCD()
 		max = n2;
 		min = n1;
 	}
+	//穷举法--效率低下
+	vector<int> num;
+	for (int i = 1;i <= min; i++)//32位下unsigned int 范围0~4294967296
+	{
+		if ((n1 % i == 0) && (n2 % i == 0))
+		{
+			num.push_back(i);
+		}
+	}
+	cout << "The GCD Is: " << num[num.size() - 1] << endl;
 
+	//按照从大（两个整数中较小的数）到小（到最小的整数1）的顺序求出第一个能同时整除
+	//两个整数的自然数
 	for (int i = min; i > 0; i--)
 	{
 		if ((n1 % i == 0) && (n2 % i == 0))
@@ -334,9 +333,128 @@ void NineNumber()
 			nu = nu / 10;
 		}
 	}
-	cout << "The number of 9 is: " << cou<< endl;//90
+	cout << "The number of 9 is: " << cou << endl;//90
 }
 
+////////////////////////////////////////////////////////
+//9.打印菱形
+void PrintRhombic()
+{
+	//①分为上下两部分
+	int line = 0;//行数 == 列数
+	cout << "Please input a Odd: ";
+	cin >> line;
+
+	int spacenumber = line / 2;//空格数
+	int starnumber = 1;//星号数
+	for (int i = 0; i < line; i++)
+	{
+		//上半部分
+		if (i <= line / 2)
+		{
+			for (int j = 0; j < spacenumber; j++)
+			{
+				cout << ' ';
+			}
+			for (int j = 0; j < starnumber; j++)
+			{
+				cout << '*';
+			}
+			cout << endl;
+			if (i == line / 2)
+			{
+				continue;
+			}
+			spacenumber--;
+			starnumber += 2;
+		}
+		else//下半部分
+		{
+			spacenumber++;
+			starnumber -= 2;
+			for (int j = 0; j < spacenumber; j++)
+			{
+				cout << ' ';
+			}
+			for (int j = 0; j < starnumber; j++)
+			{
+				cout << '*';
+			}
+			cout << endl;
+		}
+	}
+
+	//②按照行列来考虑，判断某一行某一列的元素line==colnmn
+	//对于上半部分(包括中间一行)，当前行与当前列满足如下关系输出星号i,j从1开始
+	//j>=(column+1)/2-(i + 1)     (column+1)/2-(i + 1)为第i行最左边的星号
+	//j<=(column+1)/2+(i + 1)    (column+1)/2+(i + 1)为第i行最右边的星号
+	//对于下半部分，当前行与当前列满足如下关系输出星号
+	//j>=(column+1)/2-(line-i)     (column+1)/2-(line-i)为第i行最左边的星号
+	//j<=(column+1)/2+(line-i)    (column+1)/2+(line-i)为第i行最右边的星号
+	int colnmn = line;//列==行
+	for (int i = 1; i <= line; i++)
+	{
+		//上半部分
+		if (i <= (line / 2 + 1))
+		{
+			for (int j = 1; j <= colnmn; j++)
+			{
+				if (((colnmn + 1) / 2) - (i - 1) <= j && j <= ((colnmn + 1) / 2) + (i - 1))
+				{
+					cout << '*';
+				}
+				else
+				{
+					cout << ' ';
+				}
+			}
+			cout << endl;
+		}
+		else//下半部分
+		{
+			for (int j = 1; j <= colnmn; j++)
+			{
+				if (((colnmn + 1) / 2) - (line - i) <= j && j <= ((colnmn + 1) / 2) + (line - i))
+				{
+					cout << '*';
+				}
+				else
+				{
+					cout << ' ';
+				}
+			}
+			cout << endl;
+		}
+	}
+}
+
+////////////////////////////////////////////////////////
+//10.求出100～999之间的所有“水仙花数”并输出
+void FindNarcissisticnumber()
+{
+	int bit = 0;
+	int top = 0;
+	int hundred = 0;
+
+	cout << "Result Is: ";
+	for (int i = 153; i < 1000; i++)
+	{
+		int sum = 0;
+		int n = i;
+		bit = n % 10;
+		n = n / 10;
+		top = n % 10;
+		hundred = n / 10;
+
+		sum = pow(bit, 3) + pow(top, 3) + pow(hundred, 3);
+		if (sum == i)
+		{
+			cout << i << ' ';
+		}
+	}
+
+	cout << endl;
+}
 int main()
 {
 	////1.打印素数
@@ -354,7 +472,11 @@ int main()
 	////7.分数求和
 	//SumofFraction();
 	////8.数九问题
-	NineNumber();
+	//NineNumber();
+	////9.打印菱形
+	//PrintRhombic();
+	////10.水仙花数
+	FindNarcissisticnumber();
 
 
 	system("pause");
