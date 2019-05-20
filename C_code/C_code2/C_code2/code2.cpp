@@ -147,6 +147,36 @@ void Determine_OE()
 	cout << endl;
 }
 
+////////////////////////////////////////////////////////
+//5.两个int（32位）整数m和n的二进制表达中，有多少个位(bit)不同
+void DifferentBit()
+{
+	int n1 = 0, n2 = 0;
+	cout << "please input two number: ";
+	cin >> n1 >> n2;
+
+	if (n1 < (int)-2147483648 || n1 >(int)2147483647 || n2 < (int)-2147483648 || n2 >(int)2147483647)
+	{
+		cout << "Exceeding ranger!" << endl;
+		return;
+	}
+
+	int cou = 0;
+	for (int i = 0; i < 32; i++)
+	{
+		if (((n1 >> i) & 1) != ((n2 >> i) & 1))
+			cou++;
+	}
+
+	cout << "The different bit count is: " << cou << endl;
+}
+
+////////////////////////////////////////////////////////
+//6.跳水比赛
+void MatchRanking()
+{
+
+}
 int main()
 {
 
@@ -157,7 +187,11 @@ int main()
 	////3.1的个数
 	//Count_One_Bit();
 	////4.奇偶判断
-	Determine_OE();
+	//Determine_OE();
+	////5.不同比特位
+	//DifferentBit();
+	////6.跳水比赛
+	MatchRanking();
 
 
 	system("pause");
