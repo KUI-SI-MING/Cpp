@@ -263,6 +263,42 @@ void PrintYangHuiTriangle()
 
 }
 
+////////////////////////////////////////////////////////
+//9.用分治法求最大值
+int FindMax(const vector<int> a, int left, int right)
+{
+	int fm = 0;//第一部分最大值
+	int sm = 0;//第二部分最大值
+
+	if (left == right)
+		return a[left];
+
+	int mid = (left + right) / 2;
+	fm = FindMax(a, left, mid);
+	sm = FindMax(a, mid + 1, right);
+
+	return fm > sm ? fm : sm;
+
+}
+void MaxValue()
+{
+	int size = 0;
+	cout << "Please input arr elements counts: ";
+	cin >> size;
+
+	cout << "Please input arr elements: ";
+	vector<int> arr;
+	for (int i = 0; i < size; i++)
+	{
+		int data = 0;
+		cin >> data;
+		arr.push_back(data);
+	}
+
+	int max = FindMax(arr, 0, size - 1);
+	cout << "The max value is: " << max << endl;
+}
+
 int main()
 {
 
@@ -281,7 +317,9 @@ int main()
 	////7.杀人凶手
 	//FindKiller();
 	////8.杨辉三角
-	PrintYangHuiTriangle();
+	//PrintYangHuiTriangle();
+	////9.数组最大值
+	MaxValue();
 
 
 
