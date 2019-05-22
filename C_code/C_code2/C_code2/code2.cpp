@@ -207,7 +207,8 @@ void MatchRanking()
 {
 	int arr[5] = { 0 };
 	//数组arr[0]~arr[4]分别代表A B C D E  
-	//arr[i]的值表示其名次  
+	//arr[i]的值表示其名次 
+	//暴力穷举找到唯一情况
 	for (arr[0] = 1; arr[0] <= 5; arr[0]++)
 	{
 		for (arr[1] = 1; arr[1] <= 5; arr[1]++)
@@ -233,6 +234,35 @@ void MatchRanking()
 		}
 	}
 }
+
+////////////////////////////////////////////////////////
+//7.日本某地发生了一件谋杀案，警察通过排查确定杀人凶手必为4个嫌疑犯
+//的一个。以下为4个嫌疑犯的供词。
+//A说：不是我。
+//B说：是C。
+//C说：是D。
+//D说：C在胡说
+//已知3个人说了真话，1个人说的是假话
+void FindKiller()
+{
+	char killer = '0';
+	for (killer = 'A'; killer <= 'D'; killer++)
+	{
+		//三个真命题 一个假命题
+		if (((killer != 'A') + (killer == 'C') + (killer == 'D') + (killer != 'D')) == 3)
+		{
+			cout << "The killer is: " << killer << endl;
+		}
+	}
+}
+
+////////////////////////////////////////////////////////
+//8.打印杨辉三角
+void PrintYangHuiTriangle()
+{
+
+}
+
 int main()
 {
 
@@ -247,7 +277,12 @@ int main()
 	////5.不同比特位
 	//DifferentBit();
 	////6.跳水比赛
-	MatchRanking();
+	//MatchRanking();
+	////7.杀人凶手
+	//FindKiller();
+	////8.杨辉三角
+	PrintYangHuiTriangle();
+
 
 
 	system("pause");
