@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+#define N 15
 using namespace::std;
 
 ////////////////////////////////////////////////////////
@@ -260,6 +261,36 @@ void FindKiller()
 //8.打印杨辉三角
 void PrintYangHuiTriangle()
 {
+	int i, j, n = 0, box[N][N];
+	cout << "Please input rows number: ";
+	while (0 >= n || n > N)
+		cin >> n;
+
+	//两边的数
+	for (i = 0;i < n;i++)
+	{
+		box[i][0] = box[i][i] = 1;
+	}
+
+	for (i = 2; i < n; i++)
+	{
+		for (j = 1; j < i; j++)
+		{
+			box[i][j] = box[i - 1][j - 1] + box[i - 1][j];//除两边的数外都等于上两顶数之和
+		}
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n - i; j++)
+			cout << "   ";
+		for (j = 0; j <= i; j++)
+			printf("%6d", box[i][j]);
+
+		cout << endl;
+	}
+
+	cout << endl;
 
 }
 
@@ -299,6 +330,30 @@ void MaxValue()
 	cout << "The max value is: " << max << endl;
 }
 
+////////////////////////////////////////////////////////
+//10.逆置比特位
+//在32位机器上25这个值包含下列各位：
+//00000000000000000000000000011001
+//翻转后：（2550136832）
+//10011000000000000000000000000000
+//程序结果返回：
+//2550136832
+void ReverseBit()
+{
+	unsigned int n = 0;
+	cout << "Please input a number: ";
+	while (n <= 0 || n > 4294967295)
+		cin >> n;
+
+	unsigned int res = 0;
+	//取出最低位，左移到相对应的位置
+	for (int i = 0; i < 32; i++)
+	{
+		res += ((n >> i) & 1) << (31 - i);
+	}
+
+	cout << "The val is: " << res << endl;
+}
 int main()
 {
 
@@ -319,7 +374,9 @@ int main()
 	////8.杨辉三角
 	//PrintYangHuiTriangle();
 	////9.数组最大值
-	MaxValue();
+	//MaxValue();
+	////10.逆置比特位
+	ReverseBit();
 
 
 
