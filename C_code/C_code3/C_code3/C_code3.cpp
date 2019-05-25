@@ -43,10 +43,40 @@ void AverageValue()
 	ave = Plus(((n1 ^ n2) >> 1) , n1 & n2);//(比特位：1 + 0或0 + 1的平均值， 1 + 1的平均值)
 	cout << "The average of " << n1 << " and " << n2 << " is " << ave << endl;
 }
+
+////////////////////////////////////////////////////
+//2.一组数据中只有一个数字出现了一次。其他所有数字都是成对出现的。 
+//请找出这个数字
+void FindNumsAppearOnce()
+{
+	int size;
+	cout << "Please input the size if the array: ";
+	cin >> size;
+
+	vector<int> arr;
+	for (int i = 0; i < size; i++)
+	{
+		int d = 0;
+		cout << "Please input the elements if the array: ";
+		cin >> d;
+
+		arr.push_back(d);
+	}
+
+	int res = arr[0];
+	for (int i = 1; i < size; i++)
+	{
+		res ^= arr[i];
+	}
+	cout << "The number is: " << res << endl;
+}
+
 int main()
 {
 	////1.平均值
-	AverageValue();
+	//AverageValue();
+	////2.数组中只出现一次的数字
+	FindNumsAppearOnce();
 
 	system("pause");
 	return 0;
