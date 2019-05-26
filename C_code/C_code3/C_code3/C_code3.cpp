@@ -71,12 +71,65 @@ void FindNumsAppearOnce()
 	cout << "The number is: " << res << endl;
 }
 
+
+////////////////////////////////////////////////////
+//3.有一个字符数组的内容为:"student a am i",请你将数组的内容改为"i am a student". 
+//要求：
+//不能使用库函数。只能开辟有限个空间（空间个数和字符串的长度无关）
+void RotatingArray()
+{
+	string str;
+
+	cout << "Please input Character array: ";
+	getline(cin, str);
+
+	int start = 0;
+	int end = str.size() - 1;
+
+	while (start < end)
+	{
+		swap(str[start], str[end]);
+		start++;
+		end--;
+	}
+
+	int wordsize = 0;
+	for (int i = 0; i <= str.size(); i++)
+	{
+		if (str[i] != ' ' && str[i] != '\0')
+		{
+			wordsize++;
+			continue;
+		}
+
+		if (wordsize == 1)
+		{
+			wordsize = 0;
+			continue;
+		}
+
+		start = i - wordsize;
+		end = i - 1;
+		while (start < end)
+		{
+			swap(str[start], str[end]);
+			start++;
+			end--;
+		}
+		wordsize = 0;
+	}
+
+	cout << "The new Character array is: " << str << endl;
+
+}
 int main()
 {
 	////1.平均值
 	//AverageValue();
 	////2.数组中只出现一次的数字
-	FindNumsAppearOnce();
+	//FindNumsAppearOnce();
+	/////3.数组旋转
+	RotatingArray();
 
 	system("pause");
 	return 0;
