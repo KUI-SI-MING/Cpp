@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 using namespace std;
+#define N 3
 
 ////////////////////////////////////////////////////
 //1,求两个数的平均值
@@ -124,6 +125,124 @@ void RotatingArray()
 	cout << "The new Character array is: " << str << endl;
 
 }
+
+////////////////////////////////////////////////////
+//4.输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半
+//部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变
+void reOrderArray()
+{
+	int size;
+	cout << "Please input the size if the array: ";
+	cin >> size;
+
+	vector<int> array;
+	for (int i = 0; i < size; i++)
+	{
+		int d = 0;
+		cout << "Please input the elements if the array: ";
+		cin >> d;
+
+		array.push_back(d);
+	}
+
+	int length = array.size() - 1;
+	int end = length;
+
+	while (end >= 0)
+	{
+		if (array[end] % 2 == 1)
+		{
+			for (int i = end - 1; i >= 0; i--)
+			{
+				int tmp = 0;
+				//若采用交换则会打乱相对位置，所以采取平移的方式
+				if (array[i] % 2 == 0)
+				{
+					tmp = array[i];
+					for (int j = i; j < end; j++)
+					{
+						array[j] = array[j + 1];
+					}
+					array[end] = tmp;
+					break;
+				}
+			}
+		}
+		end--;
+	}
+
+	cout << "The new array is: ";
+	for (int i = 0; i < size; i++)
+	{
+		cout << ' ' << array[i] << ' ';
+	}
+	cout << endl;
+
+}
+
+////////////////////////////////////////////////////
+//5.杨氏矩阵
+//在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按
+//照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否
+//含有该整数
+bool _Find(int target, vector<vector<int> >& array)
+{
+	int rows = array.size();
+	int cols = array[0].size();
+
+	if (array.size() > 0)
+	{
+		int i = 0;
+		int j = cols - 1;
+		while ((i < rows) && (j >= 0))
+		{
+			if (array[i][j] == target)
+			{
+				return true;
+			}
+			else if (array[i][j] < target)
+			{
+				i++;
+			}
+			else
+			{
+				j--;
+			}
+		}
+	}
+	return false;
+}
+
+void Find()
+{
+	vector<vector<int> > array(N, vector<int> (N));
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			int da = 0;
+			cout << "Please input array's elements: ";
+			cin >> da;
+			array[i][j] = da;
+		}
+	}
+
+	int target = 0;
+	cout << "Please input your find number: ";
+	cin >> target;
+	cout << endl;
+
+	if (_Find(target, array))
+	{
+		cout << "Find success!" << endl;
+	}
+	else
+	{
+		cout << "Find failed!" << endl;
+	}
+}
+
 int main()
 {
 	////1.平均值
@@ -131,7 +250,12 @@ int main()
 	////2.数组中只出现一次的数字
 	//FindNumsAppearOnce();
 	/////3.数组旋转
-	RotatingArray();
+	//RotatingArray();
+	////4.调整数组顺序使奇数位于偶数前面
+	//reOrderArray();
+	////5.杨氏矩阵
+	Find();
+
 
 	system("pause");
 	return 0;
