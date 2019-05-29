@@ -243,6 +243,34 @@ void Find()
 	}
 }
 
+////////////////////////////////////////////////////
+//6.实现一个函数，可以左旋字符串中的k个字符。 
+//ABCD左旋一个字符得到BCDA
+//ABCD左旋两个字符得到CDAB
+void LeftRotatingString()
+{
+	cout << "Please input a String: ";
+	string str;
+	cin >> str;
+
+	int k = 0;
+	cout << "Please input roating number: ";
+	cin >> k;
+
+	char tmp = 0;
+	while (k--)
+	{
+		tmp = str[0];
+		for (int i = 0; i < str.size() - 1; i++)
+		{
+			str[i] = str[i + 1];
+		}
+		str[str.size() - 1] = tmp;
+	}
+
+	cout << "The roating string is: " << str << endl;
+}
+
 int main()
 {
 	////1.平均值
@@ -254,9 +282,12 @@ int main()
 	////4.调整数组顺序使奇数位于偶数前面
 	//reOrderArray();
 	////5.杨氏矩阵
-	Find();
+	//Find();
+	////6.左旋字符串
+	LeftRotatingString();
 
 
 	system("pause");
 	return 0;
 }
+
