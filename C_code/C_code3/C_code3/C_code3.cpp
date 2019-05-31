@@ -271,6 +271,54 @@ void LeftRotatingString()
 	cout << "The roating string is: " << str << endl;
 }
 
+////////////////////////////////////////////////////
+//7.判断一个字符串是否为另外一个字符串旋转之后的字符串。 
+//例如：给定s1 ＝ AABCD和s2 = BCDAA，返回1，给定s1 = abcd和s2 = ACBD，返回0.
+//AABCD左旋一个字符得到ABCDA
+//AABCD左旋两个字符得到BCDAA
+//AABCD右旋一个字符得到DAABC
+
+void Roating(string& str, int rn)
+{
+	char tmp = 0;
+	while (rn--)
+	{
+		tmp = str[0];
+		for (int i = 0; i < str.size() - 1; i++)
+		{
+			str[i] = str[i + 1];
+		}
+		str[str.size() - 1] = tmp;
+	}
+}
+
+void WhitherRotating()
+{
+	string str1, str2;
+	cout << "Please input a String1: ";
+	cin >> str1;
+
+	cout << "Please input a String2: ";
+	cin >> str2;
+
+	if (str1 == str2)
+	{
+		cout << "str1 is equals str2" << endl;
+		return;
+	}
+
+	for (int i = 1; i < str1.size(); i++)
+	{
+		Roating(str1, 1);//从0开始左旋 0， 1， 2， ...进行判断，每次在原来的基础上旋转一个
+		if (str1 == str2)//右旋一个 == 左旋n - 1个，n为长度
+		{
+			cout << "After Roating, str1 is equals str2" << endl;
+			return;
+		}
+	}
+
+	cout << "After Roating, str1 is not equals str2" << endl;
+}
 int main()
 {
 	////1.平均值
@@ -284,7 +332,9 @@ int main()
 	////5.杨氏矩阵
 	//Find();
 	////6.左旋字符串
-	LeftRotatingString();
+	//LeftRotatingString();
+	////7.判断字符串异同
+	WhitherRotating();
 
 
 	system("pause");
