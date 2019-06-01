@@ -319,6 +319,56 @@ void WhitherRotating()
 
 	cout << "After Roating, str1 is not equals str2" << endl;
 }
+
+////////////////////////////////////////////////////////////////
+//8.递归和非递归分别实现求第n个斐波那契数
+int NotRFibonacci(int n)
+{
+
+	if (n == 0)
+		return 0;
+	if (n == 1 || n == 2)
+		return 1;
+
+
+	int n1 = 0;
+	int n2 = 1;
+	int res = 0;
+	for (int i = 2; i <= n; i++)
+	{
+		res = n1 + n2;
+		n1 = n2;
+		n2 = res;
+	}
+
+	return res;
+}
+int RFibonacci(int n)
+{
+	if (n == 0)
+		return 0;
+	else if (n == 1 || n == 2)
+		return 1;
+
+	return RFibonacci(n - 1) + RFibonacci(n - 2);
+}
+
+void Fibonacci()
+{
+	cout << "Please inout a number: ";
+	int n;
+	cin >> n;
+
+	int res = 0;
+
+	//迭代
+	res = NotRFibonacci(n);
+	cout << "The Fibonacci of the " << n << "is: " << res << endl;
+
+	//递归
+	res = RFibonacci(n);
+	cout << "The Fibonacci of the " << n << "is: " << res << endl;
+}
 int main()
 {
 	////1.平均值
@@ -334,7 +384,9 @@ int main()
 	////6.左旋字符串
 	//LeftRotatingString();
 	////7.判断字符串异同
-	WhitherRotating();
+	//WhitherRotating();
+	////8.斐波那契
+	Fibonacci();
 
 
 	system("pause");
