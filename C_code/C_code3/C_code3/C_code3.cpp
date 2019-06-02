@@ -369,6 +369,51 @@ void Fibonacci()
 	res = RFibonacci(n);
 	cout << "The Fibonacci of the " << n << "is: " << res << endl;
 }
+
+////////////////////////////////////////////////////////////////
+//9.编写一个函数实现n^k，使用递归实现 
+long Power(int n, int k)
+{
+	if (k <= 0)
+		return 1;
+	else
+		return n * Power(n, k - 1);
+}
+void PowerofNumber()
+{
+	cout << "Please input a number and a power: ";
+	int n = 0;;
+	int k = 0;
+	cin >> n >> k;
+
+	long res = 0;
+	res = Power(n, k);
+
+	cout << "The value of n ^ k is: " << res << endl;
+}
+
+///////////////////////////////////////////////////////////////
+//10.写一个递归函数DigitSum(n)，输入一个非负整数，返回组成它的数字之和，例如，
+//调用DigitSum(1729)，则应该返回1+7+2+9，它的和是19 
+int DigitSum(int n)
+{
+	if (n == 0)
+		return n;
+	else
+		return n % 10 + DigitSum(n / 10);
+}
+
+void DigitSumofNumber()
+{
+	int n = 0;
+	cout << "Please input a number: ";
+	cin >> n;
+
+	int res = DigitSum(n);
+
+	cout << "The sum of numbers is: " << res << endl;
+}
+
 int main()
 {
 	////1.平均值
@@ -386,7 +431,13 @@ int main()
 	////7.判断字符串异同
 	//WhitherRotating();
 	////8.斐波那契
-	Fibonacci();
+	//Fibonacci();
+	////9.n的次方
+	//PowerofNumber();
+	//10.数字之和
+	DigitSumofNumber();
+
+
 
 
 	system("pause");
