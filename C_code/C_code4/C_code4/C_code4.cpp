@@ -40,10 +40,53 @@ void ReverseString()
 	cout << "The new str is: " << str << endl;
 }
 
+///////////////////////////////////////////////////////////////
+//2.递归和非递归分别实现strlen
+//递归
+int _RMyStrlen(const char* str)
+{ 
+	if (*str == '\0')
+		return 0;
+
+	return 1 + _RMyStrlen(str + 1);
+
+}
+
+//非递归
+int _NotRMyStrlen(string& str)
+{
+	int count = 0;
+	int i = 0;
+	while (str[i] != '\0')
+	{
+		count++;
+		i++;
+	}
+
+	return count;
+}
+
+void MyStrlen()
+{
+	string str;
+	cout << "Please input a string: ";
+	getline(cin , str);
+
+	const char* ps = str.data();
+	int size = _RMyStrlen(ps);
+	cout << "The size of " << str << " is: " << size << endl;
+
+	size = _NotRMyStrlen(str);
+	cout << "The size of " << str << " is: " << size << endl;
+}
+
 int main()
 {
 	////1.字符反向排列
-	ReverseString();
+	//ReverseString();
+	////2.模拟实现strlen
+	MyStrlen();
+
 	system("pause");
 	return 0;
 }
