@@ -80,12 +80,51 @@ void MyStrlen()
 	cout << "The size of " << str << " is: " << size << endl;
 }
 
+///////////////////////////////////////////////////////
+//3.递归和非递归分别实现求n的阶乘
+long _RFactorial(int n)
+{
+	if (n == 1)
+		return 1;
+	else
+		return n * _RFactorial(n - 1);
+}
+
+//非递归
+long _NotRFactorial(int n)
+{
+	long  res = 1;
+	int tmp = n;
+	while (tmp)
+	{
+		res *= tmp;
+		tmp--;
+	}
+
+	return res;
+}
+void Factorial()
+{
+	int  n = 0;
+	cout << "Please input a number: ";
+	cin >> n;
+
+	long res = _RFactorial(n);
+	cout << "The Factorial of " << n << " is: " << res << endl;
+
+	res = _NotRFactorial(n);
+	cout << "The Factorial of " << n << " is: " << res << endl;
+}
+
 int main()
 {
 	////1.字符反向排列
 	//ReverseString();
 	////2.模拟实现strlen
-	MyStrlen();
+	//MyStrlen();
+	////3.n的阶乘
+	Factorial();
+
 
 	system("pause");
 	return 0;
