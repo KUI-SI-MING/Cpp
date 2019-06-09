@@ -114,6 +114,29 @@ void Factorial()
 
 	res = _NotRFactorial(n);
 	cout << "The Factorial of " << n << " is: " << res << endl;
+
+}
+
+///////////////////////////////////////////////////////////
+//4.递归方式实现打印一个整数的每一位
+void _RDecomposition_Integer(int n)
+{
+	if (n > 9)
+		_RDecomposition_Integer(n / 10);
+		
+	cout << ' ' << n % 10;
+
+}
+
+void Decomposition_Integer()
+{
+	int n = 0;
+	cout << "Please input a number: ";
+	cin >> n;
+
+	cout << "The elements of the number is: ";
+	_RDecomposition_Integer(n);
+	cout << endl;
 }
 
 int main()
@@ -123,7 +146,10 @@ int main()
 	////2.模拟实现strlen
 	//MyStrlen();
 	////3.n的阶乘
-	Factorial();
+	//Factorial();
+	////4.分解整数
+	Decomposition_Integer();
+
 
 
 	system("pause");
