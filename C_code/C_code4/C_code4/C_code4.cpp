@@ -139,6 +139,34 @@ void Decomposition_Integer()
 	cout << endl;
 }
 
+///////////////////////////////////////////////////////////////
+//5.用可变参数，实现函数，求函数参数的平均值
+int CalculateAverage(int n, ...)
+{
+	va_list arg;
+	int i = 0;
+	int sum = 0;
+	__crt_va_start (arg, n);
+	for (i = 0; i < n; i++)
+	{
+		sum += __crt_va_arg(arg, int);
+	}
+	__crt_va_end(arg);
+	return sum / n;
+}
+
+void VariableParameters()
+{
+	int n1 = 0, n2 = 0, n3 = 0;
+	cout << "Please input three number: ";
+	cin >> n1 >> n2 >> n3;
+
+	int ave1 = CalculateAverage(2, n1, n2);
+	int ave2 = CalculateAverage(3, n1, n2, n3);
+	cout << "The average of " << n1 << ' ' << n2 << " is: " << ave1 << endl;
+	cout << "The average of " << n1 << ' ' << n2 << ' ' << n3 <<  " is: " << ave2 << endl;
+
+}
 int main()
 {
 	////1.字符反向排列
@@ -148,9 +176,9 @@ int main()
 	////3.n的阶乘
 	//Factorial();
 	////4.分解整数
-	Decomposition_Integer();
-
-
+	//Decomposition_Integer();
+	////5.可变参数求平均值
+	VariableParameters();
 
 	system("pause");
 	return 0;
