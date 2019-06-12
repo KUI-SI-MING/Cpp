@@ -167,6 +167,41 @@ void VariableParameters()
 	cout << "The average of " << n1 << ' ' << n2 << ' ' << n3 <<  " is: " << ave2 << endl;
 
 }
+
+//////////////////////////////////////////////////////////////////
+//6..使用可变参数，实现函数，求函数参数的最大值
+int MaxValue(int n, ...)
+{
+	va_list arg;
+	int i = 0;
+	int max = 0;
+	__crt_va_start(arg, n);
+	for (i = 0; i < n; i++)
+	{
+		int tmp = __crt_va_arg(arg, int);
+
+		if (max < tmp)
+			max = tmp;
+	}
+	__crt_va_end(arg);
+	return max;
+}
+void VariableParameters_Max()
+{
+
+	int n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0;
+	cout << "Please input five number: ";
+	cin >> n1 >> n2 >> n3 >> n4 >> n5;
+
+	int max1 = MaxValue(3, n1, n2, n3);
+	cout << "The Max of " << n1 << ' ' << n2 << ' ' << n3 <<  " is: " << max1 << endl;
+
+	int max2 = MaxValue(5,n1, n2, n3, n4, n5);
+	cout << "The Max of " << n1 << ' ' << n2 << ' ' << n3  << ' ' << n4 \
+		<< ' ' << n5 << " is: " << max2 << endl;
+
+}
+
 int main()
 {
 	////1.字符反向排列
@@ -178,7 +213,9 @@ int main()
 	////4.分解整数
 	//Decomposition_Integer();
 	////5.可变参数求平均值
-	VariableParameters();
+	//VariableParameters();
+	////6.可变参数求最大值
+	VariableParameters_Max();
 
 	system("pause");
 	return 0;
