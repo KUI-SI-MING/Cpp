@@ -202,6 +202,25 @@ void VariableParameters_Max()
 
 }
 
+///////////////////////////////////////////////////////////////
+//7.喝汽水，1瓶汽水1元，2个空瓶可以换一瓶汽水，给20元，可以喝多少汽水?
+void Dynamic_planning()
+{
+	int money = 0;
+	cout << "Please input a number: ";
+	cin >> money;
+
+	int sum = money;//总瓶数
+	int empty = money;//空瓶数
+	while (empty >= 2)
+	{
+		sum += empty / 2;
+		empty = empty / 2 + empty % 2;//当空瓶是奇数瓶时，换过后剩余一个瓶子下次换
+	}
+
+	cout << "There is " << sum << " bottles!" << endl;
+}
+
 int main()
 {
 	////1.字符反向排列
@@ -215,7 +234,10 @@ int main()
 	////5.可变参数求平均值
 	//VariableParameters();
 	////6.可变参数求最大值
-	VariableParameters_Max();
+	//VariableParameters_Max();
+	////7.喝汽水问题
+	Dynamic_planning();
+
 
 	system("pause");
 	return 0;
