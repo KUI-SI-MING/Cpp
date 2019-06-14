@@ -221,6 +221,29 @@ void Dynamic_planning()
 	cout << "There is " << sum << " bottles!" << endl;
 }
 
+////////////////////////////////////////////////////////////
+//8.猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不过瘾，又多吃了一个。第二天
+//早上又将第一天剩下的桃子吃掉一半，有多吃了一个。以后每天早上都吃了前一天剩下的一半零一个
+//到第 10 天早上想再吃时，发现只剩下一个桃子了。编写程序求猴子第一天摘了多少个桃子
+void EatPeach()
+{
+	int day = 0;
+	cout << "Please input days: ";
+	cin >> day;
+
+	int i = day - 1;
+	int current = 1;
+	int front = 0;
+	while (i > 0)
+	{
+		front = (current + 1) * 2;
+		current = front;
+		i--;
+	}
+
+	cout << "The paches number is: " << front << endl;
+}
+
 int main()
 {
 	////1.字符反向排列
@@ -236,8 +259,9 @@ int main()
 	////6.可变参数求最大值
 	//VariableParameters_Max();
 	////7.喝汽水问题
-	Dynamic_planning();
-
+	//Dynamic_planning();
+	////8.猴子吃桃
+	EatPeach();
 
 	system("pause");
 	return 0;
