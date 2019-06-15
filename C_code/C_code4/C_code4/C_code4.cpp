@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #define N 100
+#define M 100
 
 using namespace std;
 
@@ -244,6 +245,37 @@ void EatPeach()
 	cout << "The paches number is: " << front << endl;
 }
 
+//////////////////////////////////////////////////////
+//9.中国古代数学家张丘建在他的《算经》中提出了一个著名的“百钱买百鸡问题”，鸡翁一，
+//值钱五，鸡母一，值钱三，鸡雏三，值钱一，百钱买百鸡，问翁、母、雏各几何？
+void MoneyChicken()
+{
+	int cock = 0;
+	int hen = 0;
+	int chick = 0;
+	
+	cout << "When spend " << M << " to buy " << N << " chicks:" << endl;
+	//穷举法
+	for (cock = 0; cock <= 20; cock++)//公鸡：0~20
+	{
+		for (hen = 0; hen <= 33; hen++)//母鸡：0~33
+		{
+			for (chick = 3; chick <= 99; chick++)//小鸡：3~99
+			{
+				if (5 * cock + hen * 3 + chick / 3 == M)//钱数
+				{
+					if(cock + hen + chick == N)//鸡数
+						if (chick % 3 == 0)//判断小鸡数是否为3的倍数
+						{
+							cout << "Cockerel: " << cock << " Hen: " << hen\
+								<< " Chick: " << chick << endl;
+						}
+				}
+			}
+		}
+	}
+}
+
 int main()
 {
 	////1.字符反向排列
@@ -261,7 +293,10 @@ int main()
 	////7.喝汽水问题
 	//Dynamic_planning();
 	////8.猴子吃桃
-	EatPeach();
+	//EatPeach();
+	////9.百钱买白鸡
+	MoneyChicken();
+
 
 	system("pause");
 	return 0;
