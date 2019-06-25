@@ -5,6 +5,7 @@
 
 #define N 100
 #define M 100
+#define YEAR 2011
 
 using namespace std;
 
@@ -276,6 +277,77 @@ void MoneyChicken()
 	}
 }
 
+/////////////////////////////////////////////////////////////////
+//10.如果一个渔夫从 2011 年 1 月 1 日开始每三天打一次渔，两天晒一次网，编程实现当输入 
+//2011 1 月 1 日以后的任意一天，输出该渔夫是在打渔还是在晒网
+bool IsLeap(int year)
+{
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+		return true;
+	return false;
+}
+int Days(int year, int month, int day)
+{
+
+	int sum = 0;
+	int co[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };    
+	int le[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };  
+
+	//计算输入月份之前的天数
+	if (IsLeap(year))
+	{
+		for (int i = 0; i < month; i++)
+		{
+			sum += le[i];
+		}
+	}
+	else
+	{
+		for (int i = 0; i < month; i++)
+		{
+			sum += co[i];
+		}
+	}
+
+	//计算年的天数
+	for (int i = YEAR; i < year; i++)
+	{
+		if (IsLeap(year))
+		{
+			sum += 366;
+		}
+		else
+		{
+			sum += 355;
+		}
+	}
+
+	//计算输入月的天数
+	sum += day;
+
+	return sum;
+}
+
+void FishermanProblem()
+{
+	int year = 0;
+	int month = 0;
+	int day = 0;
+	cout << "Please input year & month & day: ";
+	cin >> year >> month >> day;
+
+	int d = 0;
+	d = Days(year, month, day);//确定天数
+	if ((d % 5) < 4 && (d % 5) > 0)
+	{
+		cout << "He is Fishing" << endl;
+	}
+	else
+	{
+		cout << "He is Sunneting" << endl;
+	}
+}
+
 int main()
 {
 	////1.字符反向排列
@@ -295,8 +367,9 @@ int main()
 	////8.猴子吃桃
 	//EatPeach();
 	////9.百钱买白鸡
-	MoneyChicken();
-
+	//MoneyChicken();
+	////10.渔夫打鱼晒网
+	FishermanProblem();
 
 	system("pause");
 	return 0;
