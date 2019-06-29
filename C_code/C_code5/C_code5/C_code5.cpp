@@ -35,7 +35,7 @@ void Hill_Sort()
 	int d = count / 2;
 	while (d >= 1)
 	{
-		for (i = d + 1; i <= n; i++)
+		for (i = d + 1; i <= count; i++)
 		{
 			num[0] = num[i];
 			j = i - d;
@@ -50,7 +50,7 @@ void Hill_Sort()
 	}
 
 	cout << "The new number is: ";
-	for (i = 0; i < count; i++)
+	for (i = 1; i <= count; i++)
 	{
 		cout << ' ' << num[i];
 	}
