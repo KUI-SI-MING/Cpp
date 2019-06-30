@@ -57,10 +57,54 @@ void Hill_Sort()
 	cout << endl;
 }
 
+/////////////////////////////////////////////////////////////
+//2.Ã°ÅİÅÅĞò
+void Bubble_Sort()
+{
+	vector<int> num;
+	int n = 0;
+	int count = 0;
+	num.push_back(0);
+
+	cout << "Please input the count of number: ";
+	cin >> count;
+
+	int tmp = count;
+	cout << "Please input a number: ";
+	while (cin >> n)
+	{
+		tmp--;
+		num.push_back(n);
+
+		if (tmp == 0)
+			break;
+		cout << "Please input a number: ";
+	}
+
+	int i = 0;
+	int j = 0;
+	for(i = 1;i < num.size() - 1;i++)//±È½ÏÌËÊı
+		for (j = 1; j < num.size() - i; j++)//Ã¿Ò»ÌË±È½Ï´ÎÊı
+		{
+			if (num[j] > num[j + 1])
+				swap(num[j], num[j + 1]);
+		}
+
+	cout << "The new number is: ";
+	for (i = 1; i <= count; i++)
+	{
+		cout << ' ' << num[i];
+	}
+	cout << endl;
+}
+
 int main()
 {
 	////1.Ï£¶ûÅÅĞò
-	Hill_Sort();
+	//Hill_Sort();
+	////2.Ã°ÅİÅÅĞò
+	Bubble_Sort();
+
 
 	system("pause");
 	return 0;
