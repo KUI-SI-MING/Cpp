@@ -98,12 +98,62 @@ void Bubble_Sort()
 	cout << endl;
 }
 
+/////////////////////////////////////////////////////////////////
+//3.插入排序是把一个记录插入到已排序的有序序列中，使整个序列在插入该记录后仍然有序。插入排序中较简单的种方法是
+//直接插入排序，其插入位置的确定方法是将待插入的记录与有序区中的各记录自右向左依次比较其关键字值的大小。
+//本实例要求使用直接插入排序法将数字由小到大进行排序
+void Insert_Sort()
+{
+	vector<int> num;
+	int n = 0;
+	int count = 0;
+	num.push_back(0);
+
+	cout << "Please input the count of number: ";
+	cin >> count;
+
+	int tmp = count;
+	cout << "Please input a number: ";
+	while (cin >> n)
+	{
+		tmp--;
+		num.push_back(n);
+
+		if (tmp == 0)
+			break;
+		cout << "Please input a number: ";
+	}
+	int i = 0;
+	int j = 0;
+	for (i = 2; i <= num.size() - 1; i++)
+	{
+		num[0] = num[i];
+		j = i - 1;
+		while (num[0] < num[j])
+		{
+			num[j + 1] = num[j];
+			j--;
+		}
+
+		num[j + 1] = num[0];
+	}
+	
+	cout << "The new number is: ";
+	for (i = 1; i <= count; i++)
+	{
+		cout << ' ' << num[i];
+	}
+	cout << endl;
+}
+
 int main()
 {
 	////1.希尔排序
 	//Hill_Sort();
 	////2.冒泡排序
-	Bubble_Sort();
+	//Bubble_Sort();
+	////3.插入排序
+	Insert_Sort();
 
 
 	system("pause");
