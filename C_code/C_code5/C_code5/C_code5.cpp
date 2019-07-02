@@ -137,9 +137,80 @@ void Insert_Sort()
 
 		num[j + 1] = num[0];
 	}
-	
+
 	cout << "The new number is: ";
 	for (i = 1; i <= count; i++)
+	{
+		cout << ' ' << num[i];
+	}
+	cout << endl;
+
+}
+
+/////////////////////////////////////////////////////////////////
+//4.用快速排序法对一组数据由小到大进行排序
+int quick_sort(vector<int>& n, int start, int end)
+{
+	int i = start;	
+	int j = end;
+	n[0] = n[start];
+
+	while (i < j)
+	{
+		while (i < j && n[0] < n[j])
+			j--;
+		if (i < j)
+		{
+			n[i] = n[j];
+			i++;
+		}
+
+		while (i < j && n[i] <= n[0])
+			i++;
+		if (i < j)
+		{
+			n[j] = n[i];
+			j--;
+		}
+
+		n[i] = n[0];
+		if (start < i)
+			quick_sort(n, start, j - 1);
+		if (i < end)
+			quick_sort(n, j + 1, end);
+
+		}
+
+	return 0;
+}
+
+void Quick_Sort()
+{
+	vector<int> num;
+	int n = 0;
+	int count = 0;
+	num.push_back(0);
+
+	cout << "Please input the count of number: ";
+	cin >> count;
+
+	int tmp = count;
+	cout << "Please input a number: ";
+	while (cin >> n)
+	{
+		tmp--;
+		num.push_back(n);
+
+		if (tmp == 0)
+			break;
+		cout << "Please input a number: ";
+	}
+
+	quick_sort(num, 1, num.size() - 1);
+
+	
+	cout << "The new number is: ";
+	for (int i = 1; i <= count; i++)
 	{
 		cout << ' ' << num[i];
 	}
@@ -153,7 +224,10 @@ int main()
 	////2.冒泡排序
 	//Bubble_Sort();
 	////3.插入排序
-	Insert_Sort();
+	//Insert_Sort();
+	////4.快速排序
+	Quick_Sort();
+
 
 
 	system("pause");
