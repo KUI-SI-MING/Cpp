@@ -217,6 +217,47 @@ void Quick_Sort()
 	cout << endl;
 }
 
+/////////////////////////////////////////////////////////////
+//5.Ñ¡ÔñÅÅĞò
+void ChooseSort()
+{
+	vector<int> num;
+	int n = 0;
+	int count = 0;
+	num.push_back(0);
+
+	cout << "Please input the count of number: ";
+	cin >> count;
+	int tmp = count;
+	cout << "Please input a number: ";
+	while (cin >> n)
+	{
+		tmp--;
+		num.push_back(n);
+
+		if (tmp == 0)
+			break;
+		cout << "Please input a number: ";
+	}
+
+	for (int i = 1; i < num.size() - 1; i++)
+	{
+		for (int j = i + 1; j < num.size(); j++)
+		{
+			if (num[i] > num[j])
+				swap(num[i], num[j]);
+		}
+	}
+
+
+	cout << "The new number is: ";
+	for (int i = 1; i <= count; i++)
+	{
+		cout << ' ' << num[i];
+	}
+	cout << endl;
+}
+
 int main()
 {
 	////1.Ï£¶ûÅÅĞò
@@ -226,7 +267,9 @@ int main()
 	////3.²åÈëÅÅĞò
 	//Insert_Sort();
 	////4.¿ìËÙÅÅĞò
-	Quick_Sort();
+	//Quick_Sort();
+	////5.Ñ¡ÔñÅÅĞò
+	ChooseSort();
 
 
 
