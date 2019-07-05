@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <string>
 #include <stdlib.h>
@@ -6,8 +6,10 @@
 
 using namespace std;
 
+#define COUNT 4
+
 ////////////////////////////////////////////////////////
-//1.ÓÃÏ£¶ûÅÅÐò·¨¶ÔÒ»×éÊý¾ÝÓÉÐ¡µ½´ó½øÐÐÅÅÐò
+//1.ç”¨å¸Œå°”æŽ’åºæ³•å¯¹ä¸€ç»„æ•°æ®ç”±å°åˆ°å¤§è¿›è¡ŒæŽ’åº
 void Hill_Sort()
 {
 	vector<int> num;
@@ -58,7 +60,7 @@ void Hill_Sort()
 }
 
 /////////////////////////////////////////////////////////////
-//2.Ã°ÅÝÅÅÐò
+//2.å†’æ³¡æŽ’åº
 void Bubble_Sort()
 {
 	vector<int> num;
@@ -83,8 +85,8 @@ void Bubble_Sort()
 
 	int i = 0;
 	int j = 0;
-	for(i = 1;i < num.size() - 1;i++)//±È½ÏÌËÊý
-		for (j = 1; j < num.size() - i; j++)//Ã¿Ò»ÌË±È½Ï´ÎÊý
+	for(i = 1;i < num.size() - 1;i++)//æ¯”è¾ƒè¶Ÿæ•°
+		for (j = 1; j < num.size() - i; j++)//æ¯ä¸€è¶Ÿæ¯”è¾ƒæ¬¡æ•°
 		{
 			if (num[j] > num[j + 1])
 				swap(num[j], num[j + 1]);
@@ -99,9 +101,9 @@ void Bubble_Sort()
 }
 
 /////////////////////////////////////////////////////////////////
-//3.²åÈëÅÅÐòÊÇ°ÑÒ»¸ö¼ÇÂ¼²åÈëµ½ÒÑÅÅÐòµÄÓÐÐòÐòÁÐÖÐ£¬Ê¹Õû¸öÐòÁÐÔÚ²åÈë¸Ã¼ÇÂ¼ºóÈÔÈ»ÓÐÐò¡£²åÈëÅÅÐòÖÐ½Ï¼òµ¥µÄÖÖ·½·¨ÊÇ
-//Ö±½Ó²åÈëÅÅÐò£¬Æä²åÈëÎ»ÖÃµÄÈ·¶¨·½·¨ÊÇ½«´ý²åÈëµÄ¼ÇÂ¼ÓëÓÐÐòÇøÖÐµÄ¸÷¼ÇÂ¼×ÔÓÒÏò×óÒÀ´Î±È½ÏÆä¹Ø¼ü×ÖÖµµÄ´óÐ¡¡£
-//±¾ÊµÀýÒªÇóÊ¹ÓÃÖ±½Ó²åÈëÅÅÐò·¨½«Êý×ÖÓÉÐ¡µ½´ó½øÐÐÅÅÐò
+//3.æ’å…¥æŽ’åºæ˜¯æŠŠä¸€ä¸ªè®°å½•æ’å…¥åˆ°å·²æŽ’åºçš„æœ‰åºåºåˆ—ä¸­ï¼Œä½¿æ•´ä¸ªåºåˆ—åœ¨æ’å…¥è¯¥è®°å½•åŽä»ç„¶æœ‰åºã€‚æ’å…¥æŽ’åºä¸­è¾ƒç®€å•çš„ç§æ–¹æ³•æ˜¯
+//ç›´æŽ¥æ’å…¥æŽ’åºï¼Œå…¶æ’å…¥ä½ç½®çš„ç¡®å®šæ–¹æ³•æ˜¯å°†å¾…æ’å…¥çš„è®°å½•ä¸Žæœ‰åºåŒºä¸­çš„å„è®°å½•è‡ªå³å‘å·¦ä¾æ¬¡æ¯”è¾ƒå…¶å…³é”®å­—å€¼çš„å¤§å°ã€‚
+//æœ¬å®žä¾‹è¦æ±‚ä½¿ç”¨ç›´æŽ¥æ’å…¥æŽ’åºæ³•å°†æ•°å­—ç”±å°åˆ°å¤§è¿›è¡ŒæŽ’åº
 void Insert_Sort()
 {
 	vector<int> num;
@@ -148,7 +150,7 @@ void Insert_Sort()
 }
 
 /////////////////////////////////////////////////////////////////
-//4.ÓÃ¿ìËÙÅÅÐò·¨¶ÔÒ»×éÊý¾ÝÓÉÐ¡µ½´ó½øÐÐÅÅÐò
+//4.ç”¨å¿«é€ŸæŽ’åºæ³•å¯¹ä¸€ç»„æ•°æ®ç”±å°åˆ°å¤§è¿›è¡ŒæŽ’åº
 int quick_sort(vector<int>& n, int start, int end)
 {
 	int i = start;	
@@ -218,7 +220,7 @@ void Quick_Sort()
 }
 
 /////////////////////////////////////////////////////////////
-//5.Ñ¡ÔñÅÅÐò
+//5.é€‰æ‹©æŽ’åº
 void ChooseSort()
 {
 	vector<int> num;
@@ -258,21 +260,97 @@ void ChooseSort()
 	cout << endl;
 }
 
+/////////////////////////////////////////////////////////////////
+//6.å½’å¹¶æŽ’åº
+int  merge(int r[], int s[], int x1, int x2, int x3)
+{
+	int i = 0, j = 0, k = 0;
+	i = x1;
+	j = x2 + 1;
+	k = x1;
+
+	while ((i <= x2) && (j <= x3))
+	{
+		if (r[i] <= r[j])
+		{
+			s[k] = r[i];
+			i++;
+			k++;
+		}
+		else
+		{
+			s[k] = r[j];
+			j++;
+			k++;
+		}
+
+		while (i <= x2)
+			s[k++] = r[i++];
+		while (j <= x3)
+			s[k++] = r[j++];
+	}
+	return 0;
+}
+int mergesort(int r[], int s[], int m, int n)
+{
+	int p = 0;
+	int tmp[COUNT * 2];
+	if (m == n)
+		s[m] = r[m];
+	else
+	{
+		p = (m + n) / 2;
+		mergesort(r, tmp, m, p);
+		mergesort(r, tmp, p + 1, n);
+		merge(tmp, s, m, p, n);
+	}
+
+	return 0;
+}
+
+void Merge_sort()
+{
+	int n = 0;
+	int num[COUNT + 1];
+	num[0] = 0;
+
+	cout << "Please input " << COUNT << " number" << endl;
+	for (int i = 1; i < COUNT + 1; i++)
+	{
+		cout << "Please input a number: ";
+		cin >> n;
+		num[i] = n;
+	}
+	
+	mergesort(num, num, 1, COUNT);
+
+	cout << "The new Array is:";
+	for (int i = 1; i <= COUNT; i++)
+	{
+		cout << ' ' << num[i];
+	}
+
+
+}
+
 int main()
 {
-	////1.Ï£¶ûÅÅÐò
+	////1.å¸Œå°”æŽ’åº
 	//Hill_Sort();
-	////2.Ã°ÅÝÅÅÐò
+	////2.å†’æ³¡æŽ’åº
 	//Bubble_Sort();
-	////3.²åÈëÅÅÐò
+	////3.æ’å…¥æŽ’åº
 	//Insert_Sort();
-	////4.¿ìËÙÅÅÐò
+	////4.å¿«é€ŸæŽ’åº
 	//Quick_Sort();
-	////5.Ñ¡ÔñÅÅÐò
-	ChooseSort();
+	////5.é€‰æ‹©æŽ’åº
+	//ChooseSort();
+	////6.å½’å¹¶æŽ’åº
+	Merge_sort();
 
 
 
 	system("pause");
 	return 0;
 }
+
