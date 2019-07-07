@@ -283,17 +283,17 @@ int  merge(int r[], int s[], int x1, int x2, int x3)
 			j++;
 			k++;
 		}
-
-		while (i <= x2)
-			s[k++] = r[i++];
-		while (j <= x3)
-			s[k++] = r[j++];
 	}
+	while (i <= x2)
+		s[k++] = r[i++];
+	while (j <= x3)
+		s[k++] = r[j++];
+	
 	return 0;
 }
 int mergesort(int r[], int s[], int m, int n)
 {
-	int p = 0;
+	int p;
 	int tmp[COUNT * 2];
 	if (m == n)
 		s[m] = r[m];
@@ -329,8 +329,66 @@ void Merge_sort()
 	{
 		cout << ' ' << num[i];
 	}
+	cout << endl;
+}
 
+//////////////////////////////////////////////////////////////
+//7.二分查找，折半查找
+void binarysearch(int key, vector<int>& n, int s)
+{
+	int start = 0;
+	int end = s - 1;
+	int count = 0;//查找次数
+	int midd = (start + end) / 2;
+	while (start <= end)
+	{
+		count++;
+		if (key == n[midd])
+		{
+			cout << "Search Success! after " << count << " times looking num" << "[" << midd << "]" << key << endl;
+			return;
+		}
+		else if (key < n[midd])
+		{
+			end = midd - 1;
+		}
+		else
+		{
+			start = midd + 1;
+		}
+		midd = (start + end) / 2;
+	}
 
+	cout << "Search Failed!" << endl;
+}
+
+void Binary_Search()
+{
+	vector<int> num;
+	int n = 0;
+	int count = 0;
+
+	cout << "Please input the count of number: ";
+	cin >> count;
+	int tmp = count;
+	cout << "Please input a number: ";
+	while (cin >> n)
+	{
+		tmp--;
+		num.push_back(n);
+
+		if (tmp == 0)
+			break;
+		cout << "Please input a number: ";
+	}
+
+	cout << endl << endl;
+	cout << "Please enter the number you are looking for: ";
+	int da = 0;
+	cin >> da;
+	
+	binarysearch(da,  num, num.size());
+	cout << endl;
 }
 
 int main()
@@ -346,7 +404,9 @@ int main()
 	////5.选择排序
 	//ChooseSort();
 	////6.归并排序
-	Merge_sort();
+	//Merge_sort();
+	////7.二分查找，折半查找
+	Binary_Search();
 
 
 
