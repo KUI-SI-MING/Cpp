@@ -391,6 +391,80 @@ void Binary_Search()
 	cout << endl;
 }
 
+////////////////////////////////////////////////////
+//8.分块查找，索引顺序查找
+void Block_Search()
+{
+		
+}
+
+///////////////////////////////////////////////////////////////////
+//9.n的阶乘
+double _RFactorial(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+
+	return n * _RFactorial(n - 1);
+}
+double _NRFactorial(int n)
+{
+	double sum = 1;
+	for (int i = 1; i <= n; i++)
+	{
+		sum *= i;
+	}
+	return sum;
+}
+
+void Factorial()
+{
+	int n = 0;
+	double result = 0;
+	cout << "Please input a number: ";
+	cin >> n;
+
+	//递归
+	result = _RFactorial(n);
+	cout << "The result is : " << result << endl;
+	result = 0;
+	//非递归
+	result =  _NRFactorial(n);
+	cout << "The result is : " << result << endl;
+}
+
+//////////////////////////////////////////////////////////////////////////
+//10.求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）
+class Solution {
+public:
+	class Sum
+	{
+	public://内部类是外部类的友元类
+		Sum()
+		{
+			sum += i;
+			++i;
+		}
+	};
+
+	int Sum_Solution(int n) {
+		i = 1;
+		sum = 0;
+
+		Sum a[n];
+		return sum;
+	}
+private:
+	static int sum;
+	static int i;
+};
+
+int Solution::i = 1;
+int Solution::sum = 0;
+
+
 int main()
 {
 	////1.希尔排序
@@ -406,8 +480,13 @@ int main()
 	////6.归并排序
 	//Merge_sort();
 	////7.二分查找，折半查找
-	Binary_Search();
-
+	//Binary_Search();
+	////8.分块查找
+	//Block_Search()
+	////9.n的阶乘
+	//Factorial();
+	////10.求1+2+3+...+n
+	Solution();
 
 
 	system("pause");
