@@ -486,7 +486,7 @@ int main()
 	////9.n的阶乘
 	//Factorial();
 	////10.求1+2+3+...+n
-	Solution();
+	//Solution();
 
 
 	system("pause");
