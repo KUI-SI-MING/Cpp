@@ -46,11 +46,34 @@ void TypesOfJudgment()
 		cout << "Is not a triangle!" << endl;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////
+//2.自然底数 e=2.718281828…，e 的计算公式如下：e = 1 + 1 / 1!+ 1 / 2!+ 1 / 3!+ …要求当最后一项的值小于
+//10^10 时结束
+void Evaluation()
+{
+	float e = 1.0;
+	float n = 1.0;
+	int i = 1;
+
+	//循环控制条件
+	while (1 / n > 1e-10)
+	{
+		e += 1 / n;
+		i++;
+		n = i * n;
+	}
+
+	cout << "\n" << "The value of e is: " << e << endl;
+}
+
 int main()
 {
 
 	////1.判断三角形的类型
-	TypesOfJudgment();
+	//TypesOfJudgment();
+	////2.求自然底数e
+	Evaluation();
 
 	system("pause");
 	return 0;
