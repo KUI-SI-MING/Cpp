@@ -67,13 +67,66 @@ void Evaluation()
 	cout << "\n" << "The value of e is: " << e << endl;
 }
 
+////////////////////////////////////////////////////////
+//3.任意的整数，当从左向右读与从右向左读是相同的，且为素数时，称为回文素数。求 1000 以内的所有回文素数
+int IsPrime(int n)
+{
+	int j = 0;
+	if (n <= 1)
+	{
+		return 0;
+	}
+	if (n == 2)
+		return 1;
+
+	for (j = 2; j < n; j++)
+	{
+		if (n % j == 0)
+			return 0;
+		else if (n != j + 1)
+			continue;
+		else
+			return 1;
+	}
+}
+
+void PalindromePrimes()
+{
+	int i = 0;
+	for (i = 10; i < 1000; i++)
+	{
+		//首先判断是否为素数
+		if (IsPrime(i) == 1)
+		{
+			//判断是几位数
+			if (i / 100 == 0)
+			{
+				if (i / 10 == i % 10)
+					cout << ' ' << i;
+			}
+			else
+			{
+				if (i / 100 == i % 10)
+					cout << ' ' << i;
+			}
+			if (i % 5 == 0)
+				cout << endl;
+		}
+	}
+	cout << endl;
+}
+
+
 int main()
 {
 
 	////1.判断三角形的类型
 	//TypesOfJudgment();
 	////2.求自然底数e
-	Evaluation();
+	//Evaluation();
+	////3.回文素数
+	PalindromePrimes();
+
 
 	system("pause");
 	return 0;
