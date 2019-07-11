@@ -227,6 +227,18 @@ void FindGCD()
 		}
 	}
 
+	//Õ·×ªÏà³ý·¨
+	int m = max * min;
+	int c = max % min;
+	while (c != 0)
+	{
+		max = min;
+		min = c;
+		c = max % min;
+	}
+	cout << "The GCD is: " << min << endl;
+	cout << "The MCM is£º " << m / min << endl;
+
 }
 
 ////////////////////////////////////////////////////////
