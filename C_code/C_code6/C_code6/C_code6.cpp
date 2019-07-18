@@ -116,7 +116,35 @@ void PalindromePrimes()
 	cout << endl;
 }
 
+////////////////////////////////////////////////////////////////
+//4,假设一对兔子的成熟期是一个月，即一个月可长成成兔，那么，如果每对成兔每个月都生一对小兔，一对新生的小兔从第二个月
+//起就开始生兔子，试问从一对兔子开始繁殖，以后每个月会有多少对兔子
+void Rabbit_Num()
+{
+	int month = 0;
+	cout << "Please input Month: ";
+	cin >> month;
 
+	int r1 = 1;
+	int r2 = 1;
+	int r3 = 0;
+	if (month == 1 || month == 2)
+	{
+		cout << "There is 1 Rabbits" << endl;
+		return;
+	}
+	else
+	{
+		for (int i = 3; i <= month; i++)
+		{
+			r3 = r1 + r2;
+			r1 = r2;
+			r2 = r3;
+		}
+		cout << "There is " << r3 << " Rabbits" << endl;
+	}
+
+}
 int main()
 {
 
@@ -125,7 +153,10 @@ int main()
 	////2.求自然底数e
 	//Evaluation();
 	////3.回文素数
-	PalindromePrimes();
+	//PalindromePrimes();
+	////4.兔子生兔子问题
+	Rabbit_Num();
+
 
 
 	system("pause");
