@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 using namespace std;
+#define MAXSIZE 15
 
 /////////////////////////////////////////////////////////////////
 //1.据输入的三角形的三条边判断三角形的类型，并输出其面积和类型
@@ -145,6 +146,65 @@ void Rabbit_Num()
 	}
 
 }
+
+//////////////////////////////////////////////////////////////////
+//5.设有一矩阵为 m×n 阶（即 m 行 n 列），第 i 行 j 列的元素是 a(i,j)，需要将该矩阵转置为 n×m 阶的矩阵，
+//使其中元素满足 b(j,i)=a(i,j)
+void Matrix_Translocation()
+{
+	int rows = 0;
+	int cols = 0;
+	vector<vector<int>> matrix;
+	int new_matrix[MAXSIZE][MAXSIZE] = { 0 };
+
+	cout << "Please input the number of the rows: ";
+	cin >> rows;
+	cout << endl << "Please input the number of the cols: ";
+	cin >> cols;
+	cout << endl;
+
+	matrix.resize(rows);
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << "Please input the element: ";
+			int da = 0;
+			cin >> da;
+			matrix[i].push_back(da);
+		}
+	}
+
+	cout << "The source matrx: " << endl;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			printf("\t%d", matrix[i][j]);
+		}
+		cout << endl;
+	}
+	
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			new_matrix[j][i] = matrix[i][j];
+		}
+	}
+	
+	cout << "The new mawtrx: " << endl;
+	for (int i = 0; i < cols; i++)
+	{
+		for (int j = 0; j < rows; j++)
+		{
+			printf("\t%d", new_matrix[i][j]);
+		}
+		cout << endl;
+	}
+
+}
+
 int main()
 {
 
@@ -155,7 +215,9 @@ int main()
 	////3.回文素数
 	//PalindromePrimes();
 	////4.兔子生兔子问题
-	Rabbit_Num();
+	//Rabbit_Num();
+	////5.矩阵转置
+	Matrix_Translocation();
 
 
 
