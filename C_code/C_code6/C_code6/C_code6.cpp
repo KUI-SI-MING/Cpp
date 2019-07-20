@@ -205,6 +205,31 @@ void Matrix_Translocation()
 
 }
 
+////////////////////////////////////////////////////////////////////
+//6.一只兔子躲进了 10 个环形分布的洞的某一个，狼在第一个洞没有找到兔子，就隔一个洞，到第三个洞去找，
+//也没有找到，就隔两个洞，到第六个洞去找，以后每次多隔一个洞 去找兔子……这样下去，结果一直找不到兔子，
+//请问：兔子可能躲在哪个洞中
+void Chasing_Rabbits()
+{
+	bool pos[10] = { 0 };
+	int hunter = 0;
+	//判断狼要去的洞的下标pos(i+1) = pos[i] + 1 + i
+	for (int i = 0; i < 100; i++)
+	{
+		pos[hunter] = true;
+		hunter++;
+		hunter += i;
+		hunter = hunter % 10;
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (!pos[i])
+		{
+			cout << "The Rabbit is in " << i + 1 << " Room" << endl;
+		}
+	}
+}
 int main()
 {
 
@@ -217,7 +242,9 @@ int main()
 	////4.兔子生兔子问题
 	//Rabbit_Num();
 	////5.矩阵转置
-	Matrix_Translocation();
+	//Matrix_Translocation();
+	////6.狼追兔子问题
+	Chasing_Rabbits();
 
 
 
