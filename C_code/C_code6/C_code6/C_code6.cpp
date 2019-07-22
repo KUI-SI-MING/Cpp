@@ -230,6 +230,66 @@ void Chasing_Rabbits()
 		}
 	}
 }
+
+/////////////////////////////////////////////////////////////
+//7.张、王、李三家各有三个小孩。一天，三家的九个孩子在一起比赛短跑，规定不分年龄大小，跑第一得 9 分，跑第二得 8 分，
+//依次类推。比赛结果显示各家的总分相同，且这些孩子没有同时到达终点的，也没有一家的两个或三个孩子获得相连的名次。
+//已知获第一名的是李家的孩子，获第二名的是王家的孩子。获得最后一名的是谁家的孩子？
+int score[4][4];
+void The_Slowest_Clr()
+{
+	int resu = 0;
+
+	score[1][1] = 7;//张家孩子名次最高：7
+	score[2][1] = 8;//王家孩子名次最高：8
+	score[3][1] = 9;//李家孩子名次最高：9
+
+	//确定每家孩子的名次
+	for (int i = 4; i < 6; i++)
+	{
+		for (int j = 4; j < 7; j++)
+		{
+			for (int k = 4; i != j && k < 7; k++)
+			{
+				if (k != i && k != j && 15 - i - score[1][1] != 15 - j - score[2][1]
+					&& 15 - i - score[1][1] != 15 - k - score[3][1]
+					&& 15 - j - score[2][1] != 15 - k - score[3][1])
+				{
+					score[1][2] = i; score[1][3] = 15 - i - 7;
+					score[2][2] = j; score[2][3] = 15 - j - 8;
+					score[3][2] = k; score[3][3] = 15 - k - 9;
+				}
+
+			}
+		}
+	}
+	
+	//找到最后一名
+	for (int i = 1; i <= 3; i++, cout << endl)
+	{
+		for (int j = 1; j <= 3; j++)
+		{
+			cout << score[i][j];
+			if (score[i][j] == 1)
+			{
+				resu = i;
+			}
+		}
+	}
+
+	if (resu == 1)
+	{
+		cout << "Is Mr.zhang" << endl;
+	}
+	else if (resu == 2)
+	{
+		cout << "Is Mr.wang" << endl;
+	}
+	else
+	{
+		cout << "Is Mr.li" << endl;
+	}
+}
 int main()
 {
 
@@ -244,10 +304,13 @@ int main()
 	////5.矩阵转置
 	//Matrix_Translocation();
 	////6.狼追兔子问题
-	Chasing_Rabbits();
+	//Chasing_Rabbits();
+	////7.谁家孩子跑得最慢
+	The_Slowest_Clr();
 
 
 
 	system("pause");
 	return 0;
 }
+
