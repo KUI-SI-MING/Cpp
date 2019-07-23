@@ -326,6 +326,31 @@ void Max_Val_Pos()
 
 	cout << "The max value is: " << max << " and the pos is: [" << pos_i << ' ' << pos_j << "] " << endl;
 }
+////////////////////////////////////////////////////////////
+//8.在实际生活中经常会遇到一个问题：写英语作文时，常常要求满足一定的字数。在以往，要么我们一个一个地数；
+//要么我们估算一行的单词数，然后用行数进行估算
+void Word_Count()
+{
+	cout << "Please input a string: ";
+	char ch;
+	int word = 0;
+	int count = 0;
+
+	while ((ch = getchar()) != '\n')
+	{
+		if (ch == ' ')
+		{
+			word = 0;
+		}
+		else if (word == 0)
+		{
+			word = 1;
+			count++;
+		}
+	}
+
+	cout << "There is " << count << " words" << endl;
+}
 int main()
 {
 
@@ -344,7 +369,9 @@ int main()
 	////7.谁家孩子跑得最慢
 	//The_Slowest_Clr();
 	////8.矩阵最大值及其下标
-	Max_Val_Pos();
+	//Max_Val_Pos();
+	////9.统计单词个数，单词个数算法
+	Word_Count();
 
 
 
