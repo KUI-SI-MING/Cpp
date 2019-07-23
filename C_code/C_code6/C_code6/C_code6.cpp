@@ -290,6 +290,42 @@ void The_Slowest_Clr()
 		cout << "Is Mr.li" << endl;
 	}
 }
+
+///////////////////////////////////////////////////////////
+//8.要求使用二维数组将一个 3×4 的矩阵中所有元素的最大值及其下标获取，通过该程序，掌握二维数组的引用知识
+void Max_Val_Pos()
+{
+	vector<vector<int> > matrix(3);
+	int da = 0;
+
+	cout << "Please input " << 12 << " number: ";
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			scanf_s("%d", &da);
+			matrix[i].push_back(da);
+		}
+	}
+
+	int max = matrix[0][0];
+	int pos_i = 0;
+	int pos_j = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (matrix[i][j] > max)
+			{
+				swap(matrix[i][j], max);
+				pos_i = i;
+				pos_j = j;
+			}
+		}
+	}
+
+	cout << "The max value is: " << max << " and the pos is: [" << pos_i << ' ' << pos_j << "] " << endl;
+}
 int main()
 {
 
@@ -306,7 +342,9 @@ int main()
 	////6.狼追兔子问题
 	//Chasing_Rabbits();
 	////7.谁家孩子跑得最慢
-	The_Slowest_Clr();
+	//The_Slowest_Clr();
+	////8.矩阵最大值及其下标
+	Max_Val_Pos();
 
 
 
