@@ -348,9 +348,60 @@ void Word_Count()
 			count++;
 		}
 	}
-
 	cout << "There is " << count << " words" << endl;
 }
+
+/////////////////////////////////////////////////////////////////////////
+//10.设计一个加密和解密算法。在对一个指定的字符串加密之后，利用解密函数能够对密文解密，显示明文信息。
+//加密的方式是将字符串中每个字符加上它在字符串中的位置和一个偏移值 5。以字符串“mrsoft”为例，
+//第一个字符“m”在字符串中的位置为 0，那么它对应的密文是“'m'+0+5"，即 r
+void String_Encryption_Decrypt()
+{
+	int flag = 1;
+	string Plaintext;//明文
+	string Ciphertext;//密文
+
+	while (1)
+	{
+
+		cout << "[ Entry 1 : Encryption ] [ Entry 2 : Decrypt ] [ Entry 3 : Quit ]" << endl;
+		cout << "Please input Command: ";
+		cin >> flag;
+
+		if (flag == 1)
+		{
+			Plaintext.clear();//清除数据
+			Ciphertext.clear();
+
+			cout << "Please input a Plaintext: ";
+			getline(cin, Plaintext);//读入flag后，接着执行的回车换行符还在输入流中，所以getline碰到它后就结束了
+			getline(cin, Plaintext);//解决方法
+
+			for (int i = 0; i < Plaintext.size(); i++)
+			{
+				Ciphertext += Plaintext[i] + i + 5;
+			}
+			cout << "After Encryption, The Ciphertext is: " << Ciphertext << endl;
+		}
+		else if (flag == 2)
+		{
+			for (int i = 0; i < Plaintext.size(); i++)
+			{
+				Plaintext[i] = Ciphertext[i] - i - 5;
+			}
+			cout << "After Decrypt, The Plaintext is: " << Plaintext << endl;
+		}
+		else if (flag == 3)
+		{
+			break;
+		}
+		else
+		{
+			cout << "Input Error!" << endl;
+		}
+	}
+}
+
 int main()
 {
 
@@ -371,7 +422,9 @@ int main()
 	////8.矩阵最大值及其下标
 	//Max_Val_Pos();
 	////9.统计单词个数，单词个数算法
-	Word_Count();
+	//Word_Count();
+	////10.字符串加密和解密算法
+	String_Encryption_Decrypt();
 
 
 
