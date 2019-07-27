@@ -73,12 +73,36 @@ void Joseph()
 	cout << endl;
 
 }
+
+/////////////////////////////////////////////////////////////////
+//3.从键盘输入的整数存放到一个数组中，通过程序的运行按照数组中的逆序输出该整数，利用递归的方法解决问题
+void convert(char s[], int n)
+{
+	int i = 0;
+	if ((i = n / 10) != 0)
+		convert(s + 1, i);
+
+	*s = n % 10 + '0';
+}
+
+void Integer_Inverse_Order()
+{
+	int num = 0;
+	char str[10] = { 0 };
+	cout << "Please input a number: ";
+	cin >> num;
+
+	convert(str, num);
+	cout << "The result is: " << str << endl;
+}
 int main()
 {
 	////1.输出等腰三角形
 	//Trangle();
 	////2.约瑟夫环
-	Joseph();
+	//Joseph();
+	////3.整数逆序输出
+	Integer_Inverse_Order();
 
 	system("pause");
 	return 0;
