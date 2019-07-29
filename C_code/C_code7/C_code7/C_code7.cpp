@@ -5,6 +5,13 @@
 
 using namespace std;
 #define N 100
+#define BLUE 'B'
+#define WHITE 'W'
+#define RED 'R'
+#define swap(x, y){ char temp;\
+	temp = color[x];\
+	color[x] = color[y]; \
+	color[y] = temp; }
 
 ////////////////////////////////////////////////////////////
 //1.键盘输入任意整数 n，通过程序运行输出对应高度为 n 的等腰三角形
@@ -95,6 +102,55 @@ void Integer_Inverse_Order()
 	convert(str, num);
 	cout << "The result is: " << str << endl;
 }
+
+////////////////////////////////////////////////////////////////////////
+//	有一根绳子，上面有红、白、蓝三种颜色的旗子。绳子上旗子的颜色并没有顺序，现在要对旗子进行分类，按照蓝色、
+//白色、红色的顺序排列。只能在绳子上进行移动，并且一次只能调换两面旗子，怎样移动才能使旗子移动的次数最少？
+void Three_Color_Flag()
+{
+	char color[] = { 'R', 'W', 'B', 'W', 'W', 'B', 'R', 'B', 'W', 'R', '\0' };
+	int w = 0;
+	int b = 0;
+	int r = strlen(color) - 1;
+
+	for (int i = 0; i < strlen(color) - 1; i++)
+	{
+		cout << color[i] << ' ';
+	}
+	cout << endl;
+
+	while (w <= r)
+	{
+		if (color[w] == WHITE)
+		{
+			w++;
+		}
+		else
+		{
+			if (color[w] == BLUE)
+			{
+				swap(b, w);
+				b++;
+				w++;
+			}
+			else
+			{
+				while (w < r && color[r] == RED)
+				{
+					r--;
+				}
+				swap(r, w);
+				r--;
+			}
+		}
+	}
+
+	for (int i = 0; i < strlen(color) - 1; i++)
+	{
+		cout << color[i] << ' ';
+	}
+	cout << endl;
+}
 int main()
 {
 	////1.输出等腰三角形
@@ -102,7 +158,9 @@ int main()
 	////2.约瑟夫环
 	//Joseph();
 	////3.整数逆序输出
-	Integer_Inverse_Order();
+	//Integer_Inverse_Order();
+	////4.三色旗问题
+	Three_Color_Flag();
 
 	system("pause");
 	return 0;
