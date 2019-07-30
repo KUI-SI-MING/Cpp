@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <stdlib.h>
+#include <math.h>
 
 using namespace std;
 #define N 100
@@ -151,6 +152,42 @@ void Three_Color_Flag()
 	}
 	cout << endl;
 }
+
+///////////////////////////////////////////////////////////
+//5.定义一个表示三维空间点坐标的结构类型，通过函数求空间上任意两点之间的距离
+struct Point
+{
+	float x = 0;
+	float y = 0;
+	float z = 0;
+};
+
+float Dist(const struct Point p1, const struct Point p2)
+{
+	float s1, s2, s3;
+	float res = 0;
+
+	s1 = fabs(p1.x - p2.x);
+	s2 = fabs(p1.y - p2.y);
+	s3 = fabs(p1.z - p2.z);
+
+	res = sqrt(s1*s1 + s2*s2 + s3*s3);
+	return res;
+}
+void Space_Distance()
+{
+	struct Point p1, p2;
+	
+	cout << "Enter Point1: ";
+	cin >> p1.x >> p1.y >> p1.z;
+	cout << endl;
+	cout << "Enter Point2: ";
+	cin >> p2.x >> p2.y >> p2.z;
+	cout << endl;
+
+	cout << "The distence is: " << Dist(p1, p2) << endl;
+}
+
 int main()
 {
 	////1.输出等腰三角形
@@ -160,7 +197,9 @@ int main()
 	////3.整数逆序输出
 	//Integer_Inverse_Order();
 	////4.三色旗问题
-	Three_Color_Flag();
+	//Three_Color_Flag();
+	////5.空间两点之间的距离
+	Space_Distance();
 
 	system("pause");
 	return 0;
