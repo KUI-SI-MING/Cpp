@@ -188,6 +188,33 @@ void Space_Distance()
 	cout << "The distence is: " << Dist(p1, p2) << endl;
 }
 
+//////////////////////////////////////////////////
+//6.求某一范围内完数的个数。
+//如果一个数等于它的因子之和，则称该数为“完数”（或“完全数”)。例如，6的因子为1、2、3，而 6 = 1 + 2 + 3，
+//因此6是“完数”。
+void Finished()
+{
+	int n = 0;
+	cout << "Please input Ceiling number: ";
+	cin >> n;
+
+	for (int i = 2; i <= n; i++)
+	{
+		int sum = 0;
+		for (int j = 1; j < i; j++)
+		{
+			if (i%j == 0)
+			{
+				sum += j;
+			}
+		}
+
+		if (sum == i)
+			cout << sum << ' ';
+	}
+
+	cout << endl;
+}
 int main()
 {
 	////1.输出等腰三角形
@@ -199,7 +226,9 @@ int main()
 	////4.三色旗问题
 	//Three_Color_Flag();
 	////5.空间两点之间的距离
-	Space_Distance();
+	//Space_Distance();
+	////6.完数
+	Finished();
 
 	system("pause");
 	return 0;
