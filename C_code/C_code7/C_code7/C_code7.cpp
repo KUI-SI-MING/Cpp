@@ -215,6 +215,38 @@ void Finished()
 
 	cout << endl;
 }
+
+////////////////////////////////////////////////////////////////
+//7.如果整数A的全部因子（包括1，不包括A本身）之和等于B；且整数B的全部因子（包括1，不包括B本身）之和等于A，
+//则将整数A和B称为亲密数。求3000以内的全部亲密数
+void Intimacy_Number()
+{
+	int d1 = 0;
+	int d2 = 0;
+	int d3 = 0;
+	int i = 0;
+
+	cout << "There are following friendly--numbers pair smaller than 3000: " << endl;
+	for( d1 = 1; d1 < 3000; d1++)//穷举法
+	{
+		for (d2 = 0, i = 1 ; i <= d1 / 2; i++)
+		{
+			if (!(d1 % i))//计算d1的因子之和存放于到d2
+				d2 += i;	
+		}
+
+		for (d3 = 0,i = 1; i <= d2 / 2; i++)
+		{
+			if (!(d2 % i))//计算d2的因子之和存放于到d3
+				d3 += i;
+		}
+
+		if (d1 == d3 && d1 < d2)//亲密数只输出一次
+			cout << d1 << "---" << d2 << "     ";
+	}
+
+	cout << endl;
+}
 int main()
 {
 	////1.输出等腰三角形
@@ -228,7 +260,9 @@ int main()
 	////5.空间两点之间的距离
 	//Space_Distance();
 	////6.完数
-	Finished();
+	//Finished();
+	////7.求亲密数
+	Intimacy_Number();
 
 	system("pause");
 	return 0;
