@@ -11,5 +11,5 @@
 &emsp;&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">◆&ensp;[C语言基础编程(七)](https://github.com/KUI-SI-MING/Cpp/blob/master/C_code/C_code7/C_code7/C_code7.cpp)</br>
 #### 二、C++
 &emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">1.C++基础<br>
-&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">2.C++练习<br>
-&emsp;&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">◆&ensp;[牛客网剑指offer<一>](https://blog.csdn.net/kuisi95/article/details/89241053)<br>
+&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">2.剑指offer<br>
+&emsp;&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">◆&ensp;[剑指offer<一>](https://blog.csdn.net/kuisi95/article/details/89241053)<br>
