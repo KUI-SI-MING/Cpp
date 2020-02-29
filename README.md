@@ -9,6 +9,7 @@
 &emsp;&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">◆&ensp;[C语言基础编程(五)](https://github.com/KUI-SI-MING/Cpp/blob/master/C_code/C_code5/C_code5/C_code5.cpp)</br>
 &emsp;&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">◆&ensp;[C语言基础编程(六)](https://github.com/KUI-SI-MING/Cpp/blob/master/C_code/C_code6/C_code6/C_code6.cpp)</br>
 &emsp;&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">◆&ensp;[C语言基础编程(七)](https://github.com/KUI-SI-MING/Cpp/blob/master/C_code/C_code7/C_code7/C_code7.cpp)</br>
+&emsp;&emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">◆&ensp;[C语言基础编程(八)](https://github.com/KUI-SI-MING/Cpp/blob/master/C_code/C_code8/C_code8/C_code8.cpp)</br>
 #### 二、C++
 &emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">1.C++基础<br>
 &emsp;&emsp;&emsp;<font color = black size = 4 face = "微软雅黑">2.剑指offer<br>
