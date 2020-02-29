@@ -262,7 +262,9 @@ int main()
 	////6.完数
 	//Finished();
 	////7.求亲密数
-	Intimacy_Number();
+	//Intimacy_Number();
+	////8.求自守数
+
 
 	system("pause");
 	return 0;
