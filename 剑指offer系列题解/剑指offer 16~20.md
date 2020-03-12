@@ -125,7 +125,7 @@ public:
 - [树的子结构](https://www.nowcoder.com/practice/6e196c44c7004d15b1610b9afca8bd88?tpId=13&tqId=11170&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
 ##### 3.二叉树的镜像
 <font color=black size=3 face="微软雅黑">&emsp;&emsp;操作给定的二叉树，将其变换为源二叉树的镜像
->![在这里插入图片描述](https://img-blog.csdnimg.cn/20200311203458537.png)
+>![在这里插入图片描述](https://img-blog.csdnimg.cn/20200311203458537.png)<br>
 > <font color=black size=3 face="微软雅黑">&emsp;首先根据提供的信息观察特点，对比源二叉树和镜像二叉树，可以发现根结点相同；镜像二叉树第二层交换了源二叉树根节点的两个子结点；镜像二叉树第三层即使在上一步的基础上进一步交换每个含叶结点的左右结点。
 > <font color=black size=3 face="微软雅黑">&emsp;根据上面的特点可以总结到：先前序遍历二叉树的每个结点，如过遍历到的结点有子结点，就交换它的两个子结点，直至交换完所有的非叶子节点的左右结点后即可得到镜像二叉树
 ```cpp
@@ -162,10 +162,10 @@ public:
 ```
 ##### 4.顺时针打印矩阵
 <font color=black size=3 face="微软雅黑">&emsp;&emsp;输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
-><font color=black size=3 face="微软雅黑">1 &emsp;2&emsp; 3&emsp; 4
->5 &emsp;6&emsp; 7&emsp; 8
->9 &emsp;10 &ensp;11&emsp;12
->13&ensp;14&emsp;15&emsp;16
+><font color=black size=3 face="微软雅黑">1 &emsp;2&emsp; 3&emsp; 4<br>
+>5 &emsp;6&emsp; 7&emsp; 8<br>
+>9 &emsp;10 &ensp;11&emsp;12<br>
+>13&ensp;14&emsp;15&emsp;16<br>
 
 ><font color=black size=3 face="微软雅黑">针对这道题，没有特别的数据结构和高级的算法，考虑到的也即是此题中需要用到多次循环以及判断多个边界条件。因此我们首先考虑特殊情况：单行及单列。然后在考虑一般情况：首先计算需要打印几圈，计算出行rows列cols的较小值min，若min为偶数则圈数为：layers = min / 2;min为奇数则圈数为：layers = min / 2 + 1;然后再控制循环一圈一圈的打印数字
 ```cpp
