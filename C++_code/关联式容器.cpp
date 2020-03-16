@@ -165,3 +165,67 @@ int main()
 	system("pause");
 	return 0;
 }
+
+/////////////////////////////////////////////////////////////////////
+//4 关联式容器：set
+int main()
+{
+	//用数组中的元素构建set
+	int array[] = { 1,3,6,5,3,4,5,7,8,9,4,3,7,0 };
+	set<int> s(array, array + sizeof(array) / sizeof(array[0]));
+	cout << s.size() << endl;//9
+
+	//正向打印set中的元素，可以看到set可以去重
+	for (auto& e : s)
+	{
+		cout << e << ' ';// 0 1 3 4 5 6 7 8 9
+	}
+	cout << endl;
+
+	//使用迭代器逆向打印set中的元素
+	for (auto it = s.rbegin(); it != s.rend(); ++it)
+	{
+		cout << *it << ' ';//9 8 7 6 5 4 3 1 0
+	}
+	cout << endl;
+
+	//set中值为3的元素出现的次数（时间复杂度O(logN)）
+	cout << s.count(3) << endl;//1
+
+	system("pause");
+	return 0;
+}
+
+/////////////////////////////////////////////////////////////////////
+//5 关联式容器：multiset
+int main()
+{
+	int array[] = { 2,1,3,4,6,5,4,7,8,9,0,7,6,5 };
+
+	//multiset在底层存储的是<int, int>的键值对
+	multiset<int> s(array, array + sizeof(array) / sizeof(array[0]));
+	for (auto& e : s)
+	{
+		cout << e << ' ';// 0 1 2 3 4 4 5 5 6 6 7 7 8 9
+	}
+	cout << endl;
+
+	s.insert(5);
+	cout << s.count(5) << endl;//3
+	for (auto& e : s)
+	{
+		cout << e << ' ';// 0 1 2 3 4 4 5 5 5 6 6 7 7 8 9
+	}
+	cout << endl;
+
+	s.erase(5);
+	for (auto& e : s)
+	{
+		cout << e << ' ';// 0 1 2 3 4 4 6 6 7 7 8 9
+	}
+	cout << endl;
+
+
+	system("pause");
+	return 0;
+}
