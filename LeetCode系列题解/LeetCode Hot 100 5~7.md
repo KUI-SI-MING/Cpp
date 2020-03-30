@@ -272,8 +272,9 @@ public:
 - [正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
 #### 3.盛最多水的容器
 <font color = black size = 3 face  = "微软雅黑">给你 n 个非负整数 a~1~，a~2~，...，a~n~，每个数代表坐标中的一个点 (i, a~i~) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, a~i~) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
-说明：你不能倾斜容器，且 n 的值至少为 2。![在这里插入图片描述](https://img-blog.csdnimg.cn/20200325180916278.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2t1aXNpOTU=,size_16,color_FFFFFF,t_70)
-图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
+说明：你不能倾斜容器，且 n 的值至少为 2。<br>
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200330110112672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2t1aXNpOTU=,size_16,color_FFFFFF,t_70)<br>
+图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。<br>
 ><font color = black size = 3 face  = "微软雅黑">定义两个指针分别指向数组的左右两边，然后两个指针向中间搜索，每移动一次计算值并和结果比较去较大值。
 ```cpp
 class Solution {
